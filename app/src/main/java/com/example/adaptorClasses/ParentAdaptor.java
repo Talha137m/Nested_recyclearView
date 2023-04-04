@@ -18,6 +18,7 @@ import com.example.modelClasses.ParentModelClass;
 import com.example.nestedrecyclearviewrevision.Main3Activity;
 import com.example.nestedrecyclearviewrevision.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParentAdaptor extends RecyclerView.Adapter<ParentAdaptor.MyViewHolder> {
@@ -44,7 +45,7 @@ public class ParentAdaptor extends RecyclerView.Adapter<ParentAdaptor.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         parentModelClassPosition = parentModelClassList.get(position);
         holder.tvParentRowView.setText(parentModelClassPosition.getTitle());
         ChildAdaptor childAdaptor = new ChildAdaptor(parentModelClassPosition.getChildModelClassList());
@@ -54,10 +55,10 @@ public class ParentAdaptor extends RecyclerView.Adapter<ParentAdaptor.MyViewHold
             @Override
             public void childClick(View view, int index) {
                 Toast.makeText(holder.itemView.getContext(), "Click", Toast.LENGTH_SHORT).show();
-//                Intent intent=new Intent(holder.itemView.getContext(),Main3Activity.class);
-//                int image=parentModelClassPosition.getChildModelClassList().get(index).getImage();
-//                intent.putExtra(IMAGE_KAY,image);
-//                holder.itemView.getContext().startActivity(intent);
+                Intent intent=new Intent(holder.itemView.getContext(),Main3Activity.class);
+                int image=parentModelClassList.get(position).getChildModelClassList().get(index).getImage();
+                intent.putExtra(IMAGE_KAY,image);
+                holder.itemView.getContext().startActivity(intent);
             }
         });
     }

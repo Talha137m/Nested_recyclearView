@@ -27,16 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         rvParent=findViewById(R.id.rvParent);
         setAdaptor();
-        //clickMethodOfChild();
-        ChildAdaptor childAdaptor=new ChildAdaptor();
-        childAdaptor.setChildClickListener(new ChildAdaptor.ChildClickListener() {
-            @Override
-            public void childClick(View view, int index) {
-                int image=parentModelClassArrayList.get(index).getChildModelClassList().get(index).getImage();
-                Intent intent=new Intent(MainActivity.this,Main3Activity.class);
-                intent.putExtra(IMAGE_KAY,image);
-                startActivity(intent);
-            }
+        parentAdaptor.setParentClickListener((view, index) -> {
+            Toast.makeText(this, ""+parentModelClassArrayList.get(index).getTitle(), Toast.LENGTH_SHORT).show();
         });
     }
     private void setAdaptor(){

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nested RecyclearView revision</string>
+    <string name="email">Enter Email</string>
 </resources>
